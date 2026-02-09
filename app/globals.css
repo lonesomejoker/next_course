@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-
 @theme inline {
   --font-heading: var(--font-work-sans); /*taken from root layout*/
   --font-body: var(--font-geist-sans);
@@ -18,11 +17,12 @@
   }
 
   h3 {
-    @apply font-[700] text-[24px] md:text-[26px] lg:text-[28px] text-zinc-800 font-heading leading-[130%] md:leading-[120%] tracking-[0.7px] md:tracking-[0.5px];
+    @apply font-[700] text-[24px] md:text-[26px] lg:text-[28px] text-zinc-800 leading-[130%] md:leading-[120%] tracking-[0.7px] md:tracking-[0.5px];
+    font-family: var(--font-heading);
   }
 
   h5 {
-    @apply font-[600] text-[18px] md:text-[20px] lg:text-[22px] text-zinc-800 font-heading leading-[115%] md:leading-[110%] tracking-[0.5px] md:tracking-[0.4px];
+    @apply font-[600] text-[18px] md:text-[20px] lg:text-[22px] text-zinc-800 font-body leading-[115%] md:leading-[110%] tracking-[0.5px] md:tracking-[0.4px];
   }
 
   h6 {
@@ -567,4 +567,3 @@
     left: 20px;
   }
 }
-

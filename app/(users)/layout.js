@@ -9,7 +9,7 @@ export default function RootLayout({ children }) {
   return (
     <div>
       <Navigation />
-      <section className="my-[2.5rem]">{children}</section>
+      <section className="">{children}</section>
     </div>
   );
 }

@@ -14,7 +14,7 @@ export const metadata = {
 };
 
 const Services = () => {
-  return <div>Services</div>;
+  return <div className=" consistent"><h3>Services</h3></div>;
 };
 
 export default Services;
