@@ -19,28 +19,47 @@ const ClientComp = () => {
   useEffect(() => {
     fetchPosts();
   }, []);
+
   return (
-    <div className="flex flex-col gap-6 items-center justify-center consistent">
-      <h1 className=" text-center text-emerald-600">Client Component</h1>
-      <button
-        className=" bg-emerald-500 px-6 py-3 rounded-sm font-body text-white"
-        onClick={() => alert("hi")}
-      >
-        Click Me
-      </button>
-      <Counter />{" "}
-      {/* If client component imports another component , it automatically becomes a client component */}
-      {/* No need to use 'use client' again */}
-      <div className=" grid grid-cols-3 gap-6 ">
-        {posts.slice(0, 10).map((post) => (
-          <div
-            key={post.id}
-            className="mb-4 p-4 border border-emerald-300 rounded shadow-sm bg-white"
+    <div className="min-h-screen  ">
+      <div className=" consistent">
+        {/* Header Section */}
+        <div className="text-center mb-12">
+          <h1 className=" font-light tracking-[-2px] text-slate-800 mb-4">
+            Client Component
+          </h1>
+          <p className="text-slate-500 text-sm">
+            Interactive React component with dynamic data
+          </p>
+        </div>
+
+        {/* Action Section */}
+        <div className="flex items-center gap-4 mb-10 justify-center">
+          <button
+            className="px-8 py-3 bg-emerald-500 font-body hover:bg-emerald-600 text-white rounded-lg font-medium transition-colors duration-200 shadow-sm hover:shadow-md"
+            onClick={() => alert("hi")}
           >
-            <h6 className=" text-emerald-700 mb-3">{post.title}</h6>
-            <p className="">{post.body}</p>
-          </div>
-        ))}
+            Click Me
+          </button>
+          <Counter />
+          {/* If client component imports another component , it automatically becomes a client component */}
+          {/* No need to use 'use client' again */}
+        </div>
+
+        {/* Posts Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {posts.slice(0, 9).map((post) => (
+            <article
+              key={post.id}
+              className="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 border border-slate-200"
+            >
+              <h5 className=" mb-3 line-clamp-2 uppercase ">{post.title}</h5>
+              <p className=" text-neutral-600 text-sm leading-relaxed line-clamp-3">
+                {post.body}
+              </p>
+            </article>
+          ))}
+        </div>
       </div>
     </div>
   );

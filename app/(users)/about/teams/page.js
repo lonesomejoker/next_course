@@ -84,10 +84,10 @@ const Teams = () => {
             className="size-24 bg-blue-200 rounded-full mx-auto mb-4 flex items-center justify-center"
           >
             {member.full ? (
-              <Image
+              <Image  //automatic optimization of images using this component
                 src={member.image}
                 alt={member.name}
-                fill
+                fill //cant use width and height here
                 className="object-cover rounded-lg"
                 quality={100}
                 priority={false}

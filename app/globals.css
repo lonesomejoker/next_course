@@ -13,12 +13,12 @@
 
 @layer base {
   h1 {
-    @apply font-[700] text-[32px] sm:text-[34px] md:text-[36px]  text-[#000000d1] leading-[115%] md:leading-[110%] tracking-[1.2px] md:tracking-[1px];
-    font-family: var(--font-heading);
+    @apply font-[700] text-[32px] sm:text-[34px] md:text-[36px] font-heading text-[#000000d1] leading-[115%] md:leading-[110%] tracking-[0.4px] md:tracking-[0.2px];
+    /* font-family: var(--font-heading); */
   }
 
   h3 {
-    @apply font-[700] text-[24px] md:text-[26px] lg:text-[28px] text-zinc-800 font-heading leading-[130%] md:leading-[120%] tracking-[0.7px] md:tracking-[0.5px];
+    @apply font-[700] text-[24px] md:text-[26px] lg:text-[28px] text-zinc-800 font-heading leading-[130%] md:leading-[120%] tracking-[0.6px] md:tracking-[0.4px];
   }
 
   h5 {
