@@ -9,17 +9,36 @@ const Navigation = () => {
     { title: "Server Comp", link: "/servercomp" },
     { title: "Contact", link: "/contact" },
   ];
+
   return (
-    <header className=" flex justify-between items-center bg-neutral-800 ">
-      <nav className=" consistent py-5 flex items-center justify-between">
-        <h4 className="text-white">LOGO</h4>
-        <ul className=" flex gap-8 items-center text-white ">
+    <header className=" border-slate-200 bg-white sticky top-0 z-50 shadow-sm">
+      <nav className="consistent py-4 flex items-center justify-between">
+        {/* Logo */}
+        <Link href="/">
+          <div className="flex items-center gap-2 cursor-pointer">
+            <div className="h-10 w-10 bg-black rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-xl">N</span>
+            </div>
+            <span className="text-2xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
+              NEXT
+            </span>
+          </div>
+        </Link>
+
+        {/* Navigation Links */}
+        <ul className="flex gap-1 items-center">
           {navLinks.map((link) => (
-            <Link href={link.link} key={link.title}>
-              <li className="text-white font-[550] tracking-[0.6px] font-body">{link.title} </li>
-            </Link>
+            <li key={link.title}>
+              <Link href={link.link}>
+                <span className="px-4 py-2 text-slate-700 font-medium text-[15px] hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors cursor-pointer inline-block">
+                  {link.title}
+                </span>
+              </Link>
+            </li>
           ))}
         </ul>
+
+    
       </nav>
     </header>
   );
