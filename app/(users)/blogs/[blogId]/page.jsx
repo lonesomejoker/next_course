@@ -9,7 +9,7 @@ const SingleBlogPost = (props) => {
     console.log("params", blogs);
 
     const blogsQuery=use(props.searchParams);
-    console.log("searchParams", blogsQuery);
+    console.log("searchParams", blogsQuery);  //example: ?color=black
     
   return (
     <div className="consistent flex gap-10">

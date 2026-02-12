@@ -16,8 +16,8 @@ const DataCard = async ({ userName }) => {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-sm w-full relative overflow-hidden">
+    <div className=" bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100 flex items-center justify-center p-10">
+      <div className="bg-white rounded-2xl shadow-2xl p-8 consistent w-full relative overflow-hidden">
         {/* Background decoration */}
         <div
           className={`absolute top-0 right-0 w-32 h-32 ${
@@ -70,7 +70,7 @@ const DataCard = async ({ userName }) => {
                   Confidence
                 </span>
                 <p className=" font-bold text-gray-800 caption">
-                  {confidencePercentage}%
+                  {confidencePercentage.toFixed(2)}%
                 </p>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2.5 mt-3">

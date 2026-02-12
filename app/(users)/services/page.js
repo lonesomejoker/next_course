@@ -1,4 +1,5 @@
 import React from "react";
+import style from "./service.module.css";
 
 export const metadata = {
   title: "Services",
@@ -14,7 +15,11 @@ export const metadata = {
 };
 
 const Services = () => {
-  return <div className=" consistent"><h3>Services</h3></div>;
+  return (
+    <div>
+      <p className={style.common_text}>Services</p>
+    </div>
+  );
 };
 
 export default Services;

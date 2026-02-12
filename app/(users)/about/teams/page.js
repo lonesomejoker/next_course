@@ -130,36 +130,27 @@ const Teams = () => {
             className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-300 relative"
             whileTap={{ scale: 0.95 }}
           >
-            <motion.div
-              whileHover={{ rotate: 360 }}
-              transition={{ duration: 0.4 }}
-              className="size-24 bg-blue-200 rounded-full mx-auto mb-4 flex items-center justify-center"
-            >
-              {member.full ? (
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  fill
-                  className="object-cover rounded-lg"
-                  quality={100}
-                  priority={false}
-                  placeholder="blur"
-                  blurDataURL=""
-                />
-              ) : (
-                <Image
-                  src={member.image}
-                  width={500}
-                  height={500}
-                  quality={80}
-                  alt={member.name}
-                  className="w-full h-full rounded-full object-cover"
-                />
-              )}
-            </motion.div>
-            <h6 className="text-center">{member.name}</h6>
-            <p className="text-center mt-2">{member.position}</p>
-            <p className="caption text-center mt-1">{member.skills}</p>
+            {member.full ? (
+              <Image  //automatic optimization of images using this component
+                src={member.image}
+                alt={member.name}
+                fill //cant use width and height here
+                className="object-cover rounded-lg"
+                quality={100}
+                priority={false}
+                placeholder="blur"
+                blurDataURL=""
+              />
+            ) : (
+              <Image
+                src={member.image}
+                width={500}
+                height={500}
+                quality={80}
+                alt={member.name}
+                className="w-full h-full rounded-full object-cover"
+              />
+            )}
           </motion.div>
         ))}
       </motion.section>
