@@ -8,6 +8,7 @@ const DynamicPage = async () => {
   //when u make changes in db after run build, it reflects in dynamic page
 
   const doctors = await getAllDoctors();
+  console.log("dynamic doctor");
 
   return (
     <div className="consistent ">

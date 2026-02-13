@@ -4,12 +4,12 @@ import { User, Users, Star, TrendingUp } from "lucide-react";
 const DataCard = async ({ userName }) => {
   const res = await fetch(`https://api.genderize.io/?name=${userName}`);
   const userData = await res.json();
-  //   console.log(userData);
+  console.log("data:",userData);
 
   const isMale = userData.gender === "male";
   const confidencePercentage = userData.probability * 100;
 
-  await new Promise((resolve) => {
+  await new Promise((resolve) => { //for loading animation
     setTimeout(() => {
       resolve();
     }, 500);
@@ -45,18 +45,18 @@ const DataCard = async ({ userName }) => {
 
             <h6 className=" text-gray-800 mb-2 capitalize">{userData.name}</h6>
             <div
-              className={`inline-flex items-center px-4 py-1.5 rounded-full text-sm font-semibold ${
+              className={`inline-flex items-center px-4 py-1.5 rounded-full text-sm font-body capitalize ${
                 isMale
                   ? "bg-blue-100 text-blue-800 border border-blue-200"
                   : "bg-pink-100 text-pink-800 border border-pink-200"
               }`}
             >
               <span
-                className={`w-2 h-2 rounded-full mr-2 ${
+                className={`w-2 h-2 rounded-full mr-2 font-body ${
                   isMale ? "bg-blue-500" : "bg-pink-500"
                 }`}
               ></span>
-              {capitalizeFirst(userData.gender)}
+              {userData.gender}
             </div>
           </div>
 

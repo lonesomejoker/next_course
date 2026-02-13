@@ -12,8 +12,8 @@ export const db = mysql.createPool({
 try {
   const connection = await db.getConnection();
   console.log("✔️ Database connected successfully.");
-  connection.release();
+  connection.release(); //important to release back to pool
 } catch (err) {
   console.log("❌ Connection Failed:", err);
-  process.exit(1); //stop server
+  process.exit(1); //stop server if DB is essential
 }
