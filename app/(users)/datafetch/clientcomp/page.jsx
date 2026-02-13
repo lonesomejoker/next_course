@@ -9,18 +9,33 @@ const DataFetchClient = () => {
   const searchParams = useSearchParams();
   const userName = searchParams.get("name");
 
+  //Another method
+  // const searchParams=use(props.searchParams);
+  //const userName=searchParams?.name;
+
   useEffect(() => {
-    const fetchUserData = async () => {
+    let timeoutId;
+
+    const revealGender = async () => {
       try {
         const res = await fetch(`https://api.genderize.io/?name=${userName}`);
         const data = await res.json();
-        setUserData(data);
+
+        timeoutId = setTimeout(() => {
+          setUserData(data);
+        }, 3000);
       } catch (err) {
         console.error("Failed to fetch userData:", err);
       }
     };
-    fetchUserData();
-  }, []);
+
+    if (userName) revealGender();
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [userName]);
+
   //   console.log("final result:", userData);
 
   const probability = userData?.probability * 100;

@@ -39,10 +39,12 @@ const DataFetchServer = async (props) => {
   const searchParams = await props.searchParams;
   const userName = searchParams.name;
 
+  // await new Promise((resolve) => setTimeout(resolve, 3000));
+
   // Handle case where no name is provided
-   if (!userName || userName === "") {
+  if (!userName || userName === "") {
     return (
-      <div className=" bg-white shadow-lg shadow-slate-200 px-10 py-6 rounded-md w-fit mx-auto">
+      <div className=" bg-white shadow-lg shadow-slate-200 mt-[4rem] px-10 py-6 rounded-md w-fit mx-auto">
         <h6 className=" mb-3">No valid name Provided</h6>
         <p>Please provide a valid name in the query parameter ?name="..."</p>
       </div>
