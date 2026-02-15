@@ -24,7 +24,7 @@ body {
   }
 
   h3 {
-    @apply font-[700] text-[24px] md:text-[26px] lg:text-[28px] text-zinc-800 font-heading leading-[130%] md:leading-[120%] tracking-[0.6px] md:tracking-[0.4px];
+    @apply font-[700] text-[24px] md:text-[26px] lg:text-[28px] text-zinc-800 leading-[130%] md:leading-[120%] tracking-[0.6px] md:tracking-[0.4px];
   }
 
   h5 {

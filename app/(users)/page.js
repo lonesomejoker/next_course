@@ -1,8 +1,11 @@
+import HomeBannerTwo from "@/components/ui/HomeBannerTwo";
+import UpgradeBusiness from "@/components/ui/UpgradeBusiness";
+import WhatMakes from "@/components/ui/WhatMakes";
 import Link from "next/link";
 //route groups : (users)
 const Home = () => {
   return (
-    <div className="relative  bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 h-[92vh] overflow-clip content-center">
+    <div className="relative  bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 content-center">
       <section className="consistent">
         {/* Breadcrumbs */}
         <nav className="flex items-center gap-2 text-sm absolute top-0 left-0 p-6">
@@ -50,6 +53,10 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <WhatMakes/>
+      <HomeBannerTwo/>
+      <UpgradeBusiness/>
     </div>
   );
 };
