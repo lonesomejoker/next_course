@@ -1,4 +1,4 @@
-const Loading = () => {
+const Load = () => {
   return (
     <div className="loading-section">
       <div className="hourglassBackground">
@@ -16,4 +16,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default Load;

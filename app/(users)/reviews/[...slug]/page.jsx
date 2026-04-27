@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { RiArrowDropRightLine } from "react-icons/ri";
+import { ArrowRight } from "lucide-react";
 
 //catch-all segment [...slug]
 const Reviews = async (props) => {
@@ -34,7 +34,7 @@ const Reviews = async (props) => {
                       </Link>
 
                       {/* Separator */}
-                    <RiArrowDropRightLine className="text-white text-[2rem]" />
+                    <ArrowRight className="text-white text-[2rem]" />
                     </>
                   ) : (
                     <p className="text-[#e8edf7] px-4 py-2 rounded-lg bg-gradient-to-br from-indigo-500/15 to-purple-500/15 border border-indigo-500/30 capitalize backdrop-blur-md shadow-[0_0_20px_rgba(99,102,241,0.2)] ">

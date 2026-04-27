@@ -5,11 +5,13 @@ import React from "react";
 const ProductList = () => {
   const searchParams = useSearchParams();
   console.log("inside:", searchParams);
-  const pages = searchParams.getAll("page") || 1;
+
+  //in client component u need to use methods
+  const pages = searchParams.getAll("page") || 1; //getAll cuz if there is two page=10 & page=11... query params
   const category = searchParams.get("category") || "all";
   console.log("Category:", category, "Page:", pages);
-  // const entries =Object.fromEntries(searchParams.entries());
-  // console.log("Entries:", entries);
+  const entries =Object.fromEntries(searchParams.entries());
+  console.log("Entries:", entries);
 
   return <div>ProductList</div>;
 };

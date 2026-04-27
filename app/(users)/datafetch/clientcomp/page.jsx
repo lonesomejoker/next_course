@@ -1,8 +1,8 @@
 "use client";
 
-import { capitalizeFirst } from "@/components/utils/Elements";
+import GenderCard from "@/components/reusables/GenderCard";
 import { useSearchParams } from "next/navigation";
-import { use, useEffect, useState } from "react";
+import { Suspense, use, useEffect, useState } from "react";
 
 const DataFetchClient = () => {
   const [userData, setUserData] = useState({});
@@ -20,10 +20,7 @@ const DataFetchClient = () => {
       try {
         const res = await fetch(`https://api.genderize.io/?name=${userName}`);
         const data = await res.json();
-
-        timeoutId = setTimeout(() => {
-          setUserData(data);
-        }, 3000);
+        setUserData(data);
       } catch (err) {
         console.error("Failed to fetch userData:", err);
       }
@@ -39,7 +36,7 @@ const DataFetchClient = () => {
   //   console.log("final result:", userData);
 
   const probability = userData?.probability * 100;
-  if (!userData.gender || !userName || userName === "") {
+  if ( !userName || userName === "") {
     return (
       <div className=" bg-white shadow-lg shadow-slate-200 px-10 py-6 rounded-md w-fit mx-auto">
         <h6 className=" mb-3">No valid name Provided</h6>
@@ -50,9 +47,14 @@ const DataFetchClient = () => {
 
   return (
     <div className="consistent">
-      <h6>
+      {/* <h6>
         {userData?.name}- {probability}% {capitalizeFirst(userData?.gender)}
-      </h6>
+      </h6> */}
+      <GenderCard
+        isMale={userData.gender === "male"}
+        userData={userData}
+        confidencePercentage={probability}
+      />
     </div>
   );
 };

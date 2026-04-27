@@ -16,7 +16,8 @@ const SingleDoctor = async (props) => {
   const params = await props.params;
   console.log("prams: ", params);
 
-  const [[doctor]] = await db.execute(
+
+  const [[doctor]] = await db.execute( //u can write any name inside the double destructuring
     `select * from doctors where doctor_id = ?`,
     [params.id]
   );

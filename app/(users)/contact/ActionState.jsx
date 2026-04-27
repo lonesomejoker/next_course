@@ -1,35 +1,18 @@
 "use client";
 
-import { useActionState, useState, useTransition } from "react";
+import { useActionState } from "react";
 import { contactAction } from "./contact.action";
-import { useFormStatus } from "react-dom";
 
-// const contactAction=(formData)=>{
-//   const {fullName,email,message}=Object.fromEntries(formData.entries()); //gets all values of inputfield inside form
-//   console.log("data:",fullName,email,message);
-// };
-
-const Contact = () => {
+//useActionState hook
+const ActionState = () => {
   // const [state,formAction,isPending]=useActionState(fn,initialState);
-  // const [state, formAction, isPending] = useActionState(contactAction, null);
+  const [state, formAction, isPending] = useActionState(contactAction, null);
 
-  //alternative method instead of using useActionState hook
-  const [contactForm, setContactForm] = useState(null);
-  const [isPending, startTransition] = useTransition(); //use transition use case React 19
-
-  const handleSubmit = (formData) => {
-    // const { fullName, email, message } = Object.fromEntries(formData); //gets all values of inputfield inside form
-    // console.log("data:", fullName, email, message);
-    startTransition(async () => {
-      const res = await contactAction(formData);
-      setContactForm(res);
-    });
-  };
   return (
     <div className="consistent relative">
       <div className="max-w-[42%] mx-auto bg-neutral-800 px-8 pt-8 pb-12 rounded-2xl h-fit">
         <h3 className="  mb-5 text-white">Get In Touch</h3>
-        <form className="space-y-6" action={handleSubmit}>
+        <form className="space-y-6" action={formAction}>
           {/* Full Name Field */}
 
           <div>
@@ -85,20 +68,17 @@ const Contact = () => {
             />
           </div>
 
-          {/* Submit Button */}
-          <Submit />
+          <button
+            disabled={isPending}
+            type="submit"
+            className=" w-full px-4 py-3.5 bg-black text-white rounded-md caption disabled:bg-gray-800 disabled:cursor-not-allowed"
+          >
+            {isPending ? <span>Loading...</span> : <span>Send Message</span>}
+          </button>
         </form>
       </div>
-      {contactForm && (
-        <p
-          className={`text-white mt-3 w-fit mx-auto  shadow-md shadow-gray-200 px-6 py-2  ${
-            contactForm.success ? "bg-emerald-500 " : "bg-rose-600"
-          }`}
-        >
-          {contactForm.message}
-        </p>
-      )}
-      {/* {state && (
+
+      {state && (
         <p
           className={`text-white mt-3 w-fit mx-auto  shadow-md shadow-gray-200 px-6 py-2  ${
             state.success ? "bg-emerald-500 " : "bg-rose-600"
@@ -106,22 +86,9 @@ const Contact = () => {
         >
           {state.message}
         </p>
-      )} */}
+      )}
     </div>
   );
 };
 
-export default Contact;
-
-const Submit = () => {
-  const { pending, data, method, action } = useFormStatus();
-  return (
-    <button
-      disabled={pending}
-      type="submit"
-      className=" w-full px-4 py-3.5 bg-black text-white rounded-md caption disabled:bg-gray-800 disabled:cursor-not-allowed"
-    >
-      {pending ? <span>Loading...</span> : <span>Send Message</span>}
-    </button>
-  );
-};
+export default ActionState;

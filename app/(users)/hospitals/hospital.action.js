@@ -13,7 +13,7 @@ export const createHospitalAction = async (formData) => {
       `INSERT INTO hospital (name, city, state, department, established_year) VALUES (?, ?, ?, ?, ?)`,
       [name, city, state, department, established_year]
     );
-    revalidatePath("/hospitals"); //it works like a cache invalidation, it will revalidate the path and fetch the latest data
+    revalidatePath("/hospitals"); //it works like a cache invalidation, it will revalidate the path and fetch the latest data without reloading the page
 
     // return { success: true, message: "Hospital data submitted successfully" };
   } catch (error) {

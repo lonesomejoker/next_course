@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 
 //u can also set "use server" individually inside functions
 //u need prevoiusState in useActionState method inside argument
-export const contactAction = async ( formData) => {
+export const contactAction = async ( previousState, formData) => {
   // const fullName = formData.get("fullName");
 
   try {
@@ -21,7 +21,7 @@ export const contactAction = async ( formData) => {
     // redirect("/");
   } catch (error) {
     console.log("server action:", error);
-    if (error.message === "NEXT_REDIRECT") throw error;  //for handling redirect
+    if (error.message === "NEXT_REDIRECT") throw error;  //for handling redirect , it  is necessary when using redirect inside try/catch
     return { success: false, message: "error while subitting" };
   }
 };

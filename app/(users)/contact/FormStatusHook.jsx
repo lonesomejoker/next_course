@@ -1,37 +1,19 @@
 "use client";
 
-import { useActionState, useState, useTransition } from "react";
+import { useActionState } from "react";
 import { contactAction } from "./contact.action";
-import { useFormStatus } from "react-dom";
 
-// const contactAction=(formData)=>{
-//   const {fullName,email,message}=Object.fromEntries(formData.entries()); //gets all values of inputfield inside form
-//   console.log("data:",fullName,email,message);
-// };
-
-const Contact = () => {
+//useActionState hook
+const FormStatusHook = () => {
   // const [state,formAction,isPending]=useActionState(fn,initialState);
-  // const [state, formAction, isPending] = useActionState(contactAction, null);
+  const [state, formAction, isPending] = useActionState(contactAction, null);
 
-  //alternative method instead of using useActionState hook
-  const [contactForm, setContactForm] = useState(null);
-  const [isPending, startTransition] = useTransition(); //use transition use case React 19
-
-  const handleSubmit = (formData) => {
-    // const { fullName, email, message } = Object.fromEntries(formData); //gets all values of inputfield inside form
-    // console.log("data:", fullName, email, message);
-    startTransition(async () => {
-      const res = await contactAction(formData);
-      setContactForm(res);
-    });
-  };
   return (
     <div className="consistent relative">
       <div className="max-w-[42%] mx-auto bg-neutral-800 px-8 pt-8 pb-12 rounded-2xl h-fit">
         <h3 className="  mb-5 text-white">Get In Touch</h3>
-        <form className="space-y-6" action={handleSubmit}>
+        <form className="space-y-6" action={formAction}>
           {/* Full Name Field */}
-
           <div>
             <label
               htmlFor="fullName"
@@ -48,7 +30,6 @@ const Contact = () => {
               placeholder="Enter your full name"
             />
           </div>
-
           {/* Email Field */}
           <div>
             <label
@@ -66,7 +47,6 @@ const Contact = () => {
               placeholder="Enter your email address"
             />
           </div>
-
           {/* Message Field */}
           <div>
             <label
@@ -84,21 +64,12 @@ const Contact = () => {
               placeholder="Enter your message..."
             />
           </div>
-
-          {/* Submit Button */}
-          <Submit />
+          <Submit />{" "}
+          {/* using useformstatus hook u can get the all the data of form wihtout passing any props*/}
         </form>
       </div>
-      {contactForm && (
-        <p
-          className={`text-white mt-3 w-fit mx-auto  shadow-md shadow-gray-200 px-6 py-2  ${
-            contactForm.success ? "bg-emerald-500 " : "bg-rose-600"
-          }`}
-        >
-          {contactForm.message}
-        </p>
-      )}
-      {/* {state && (
+
+      {state && (
         <p
           className={`text-white mt-3 w-fit mx-auto  shadow-md shadow-gray-200 px-6 py-2  ${
             state.success ? "bg-emerald-500 " : "bg-rose-600"
@@ -106,12 +77,12 @@ const Contact = () => {
         >
           {state.message}
         </p>
-      )} */}
+      )}
     </div>
   );
 };
 
-export default Contact;
+export default FormStatusHook;
 
 const Submit = () => {
   const { pending, data, method, action } = useFormStatus();
